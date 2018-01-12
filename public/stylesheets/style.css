@@ -1,0 +1,322 @@
+.splash-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: url('../images/bg.jpeg');
+  background-size: cover;
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 450px;
+  padding: 60px 40px 70px 40px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.user {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.login-box h2 {
+  margin: 0;
+  padding-bottom: 20px;
+  font-weight: 300;
+  font-size: 30px;
+  color: rgb(120, 243, 4);
+  text-align: center;
+}
+
+.login-box p {
+  margin: 0;
+  padding: 0;
+  font-size: medium;
+  font-weight: bold;
+  color: #fff;
+}
+
+.no-bottom-margin {
+  margin-bottom: 5px !important;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.login-box input[type="text"], .login-box input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+  background: rebeccapurple;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+  background: rgb(120, 243, 4);
+  color: #262626;
+}
+
+.login-box a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-box a:hover {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.pull-right {
+  float: right;
+}
+
+#login-error-msg, #signup-error-msg, #forgot-msg-emailed, #forgot-error-msg {
+  color: red !important;
+  visibility: hidden;
+}
+
+#show-on-signup {
+  display: none;
+}
+
+#show-on-forgot {
+  display: none;
+}
+
+.nav-bar {
+  background: rebeccapurple;
+  position: relative;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.nav-bar span {
+  margin: 0;
+  line-height: 50px;
+  color: rgb(120, 243, 4);
+  font-weight: bold;
+  font-size: 26px;
+}
+
+#welcome-text {
+  margin-left: 50px;
+  color: white;
+  font-size: 16px;
+  position: relative;
+  top: -3px;
+}
+
+.logout-btn {
+  float: right;
+  position: relative;
+  right: 40px;
+  font-size: 16px !important;
+  cursor: pointer;
+  color: white !important;
+}
+
+.logout-btn:hover {
+  color: rgb(120, 243, 4) !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  margin: 0;
+  padding: 15px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 15px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  margin-bottom: 0px;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.half-width h4 {
+  margin-bottom: 5px;
+}
+
+.half-width small {
+  color: rebeccapurple;
+}
+
+select, .card input, .background-color input {
+  background: white;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.no-overflow {
+  overflow-x: hidden;
+}
+
+.wrapper input[type="submit"], .button-style input[type="submit"] {
+  background: rebeccapurple;
+  border: none;
+  width: 50px;
+  color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px #999;
+  cursor: pointer;
+}
+
+.wrapper input[type="submit"]:hover, .button-style input[type="submit"]:hover {
+  background: rgb(157, 81, 233);
+  box-shadow: 3px 3px 3px #999;
+}
+
+.small-width1 {
+  width: 75px;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.small-width2 {
+  width: 40px;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.margin-right {
+  margin-right: 30px !important;
+}
+
+.half-width {
+  width: calc(50% - 60px);
+  display: inline-block;
+  margin: 10px;
+  margin-top: 20px;
+  background: white;
+}
+
+.mini-card-wrapper {
+  box-sizing: border-box;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.padding-top {
+  padding-top: 15px;
+}
+
+.background-color {
+  background: rgba(138, 109, 167, 0.2);
+}
+
+.width25 {
+  width: 25%;
+}
+
+.width75 {
+  width: 75%;
+}
+
+table {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.margin-left {
+  margin-left: 15px;
+}
+
+.padding-left {
+  padding-left: 15px;
+}
+
+.padding15 {
+  padding: 10px;
+}
+
+.negative-margin-top {
+  margin-top: -15px;
+}
+
+.negative-margin-lr {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.margin-bottom {
+  margin-bottom: 15px;
+}

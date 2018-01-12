@@ -1,0 +1,104 @@
+extends layout
+
+block content
+  div(class="no-overflow")
+    div(class="nav-bar")
+      div(class="nav-bar-content")
+        span DiabetesJS
+        span(id="welcome-text") Welcome, #{user.user.firstName}
+        span(class="logout-btn") Logout
+    div(class="container")
+      div(class="card")
+          div(class="text-left padding15 margin-bottom negative-margin-top negative-margin-lr background-color")
+            h4(class="card-header")
+              b Add An Entry   
+          div(class="wrapper")
+            div
+              label(for="category") Category
+              select(name="category" class="margin-right" id="category-input")
+                option(value="bgl") Blood Glucose Level
+                option(value="diet") Diet
+                option(value="exercise") Exercise
+                option(value="medication") Medication
+            div
+              label(for="entry") Entry
+              input(type="text" class="margin-right" name="entry" id="entry-input")
+            div
+              label(for="time") When
+              input(type="text" class="small-width1" name="time" placeholder="mm/dd/yyyy" id="date-input")
+              input(type="text" class="small-width2" name="" placeholder="hh:mm" id="time-input")
+            div
+              input(type="submit" class="four" value="Add" id="add-entry-btn")
+      form(class="button-style card margin-top padding-top text-center" method="post" action="/entries" id="history-form")
+        div(class="text-center")
+          div(class="text-left padding15 margin-bottom negative-margin-lr negative-margin-top background-color")
+            h4(class="card-header")
+              b View Your History
+        input(type="hidden", name="userid" value=user['user']['id'] id="user-id-input")
+        input(type="hidden", name="username" value=user['user']['firstName'] id="user-name-input")
+        label(for="from") From 
+        input(type="text" class="small-width1" name="fromdate" value=fromdate placeholder="mm/dd/yyyy" id="date-input")
+        input(type="text" class="small-width2 margin-right" name="fromtime" value=fromtime placeholder="hh:mm" id="time-input")
+        label(for="to") To 
+        input(type="text" class="small-width1" name="todate" value=todate placeholder="mm/dd/yyyy" id="date-input")
+        input(type="text" class="small-width2" name="totime" value=totime placeholder="hh:mm" id="time-input")
+        input(type="submit" value="Filter")
+        div(class="mini-card-wrapper")
+          div(class="card half-width margin-top text-left")
+              h4(class="card-header")
+                b Blood Glucose Level 
+                small &nbsp; Mean: #{4} Variance: #{5}
+              table(cellpadding="5")
+                thead
+                  th 
+                    i Date
+                  th 
+                    i Entry
+                tbody
+                  each val, index in user.bglData
+                    tr
+                      td(class="width25") #{val.timestamp}
+                      td(class="width75") #{val.entry}                  
+          div(class="card half-width margin-top text-left")
+              h4(class="card-header")
+                b Diet
+              table(cellpadding="5")
+                thead
+                  th
+                    i Date
+                  th
+                    i Entry
+                tbody
+                  each val, index in user.bglData
+                    tr
+                      td(class="width25") #{val.timestamp}
+                      td(class="width75") #{val.entry}     
+          div(class="card half-width margin-top text-left")
+              h4(class="card-header")
+                b Exercise
+              table(cellpadding="5")
+                thead
+                  th 
+                    i Date
+                  th 
+                    i Entry
+                tbody
+                  each val, index in user.bglData
+                    tr
+                      td(class="width25") #{val.timestamp}
+                      td(class="width75") #{val.entry}     
+          div(class="card half-width margin-top text-left")
+              h4(class="card-header")
+                b Medication
+              table(cellpadding="5")
+                thead
+                  th 
+                    i Date
+                  th 
+                    i Entry
+                tbody
+                  each val, index in user.bglData
+                    tr
+                      td(class="width25") #{val.timestamp}
+                      td(class="width75") #{val.entry}
+    script(src='/javascripts/home.js')

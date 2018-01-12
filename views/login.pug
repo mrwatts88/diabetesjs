@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    div(class="splash-screen")
+        div(class="login-box")
+            img(src="/images/user.png", class="user")
+            div(id="show-on-login")
+                h2='DiabetesJS'
+                form(action="/home", onsubmit="event.preventDefault(); login();")
+                    p Email
+                    input(type="text" name="email" id="email-input")
+                    p Password
+                    input(type="password" name="password" id="password-input" class="no-bottom-margin")
+                    p(id="login-error-msg") Invalid email or password
+                    input(type="submit" value="Sign In" id="login-btn")
+                    a(href="#" id="forgot-btn") Forgot?
+                    a(href="#" class="pull-right" id="signup-btn") Sign Up
+                    p(id="forgot-msg-emailed") Your password has been emailed
+            div(id="show-on-signup")            
+                h2='Signup'
+                form(action="/home", onsubmit="event.preventDefault(); signup();")
+                    p Name
+                    input(type="text" name="email" id="name-input-signup")
+                    p Email
+                    input(type="text" name="email" id="email-input-signup")
+                    p Password
+                    input(type="text" name="password" id="password-input-signup" class="no-bottom-margin")
+                    p(id="signup-error-msg") Please fill out all fields
+                    input(type="submit" value="Sign Up" id="signup-btn-signup")
+                    a(href="#" class="pull-right" id="signin-btn-signup") Sign In
+            div(id="show-on-forgot")            
+                h2='Password Reset'
+                form(action="/home", onsubmit="event.preventDefault(); resetPassword();")                    
+                    p Email
+                    input(type="text" name="email" id="email-input-forgot")
+                    p(id="forgot-error-msg") Please fill out all fields
+                    input(type="submit" value="Send Email" id="forgot-btn-forgot")
+                    a(href="#" class="pull-right" id="signin-btn-forgot") Sign In
+    script(src='/javascripts/login.js')
