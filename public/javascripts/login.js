@@ -24,7 +24,7 @@ backToLoginFromForgotBtn.addEventListener('click', showLogin);
 
 function login() {
     firebase.auth().signInWithEmailAndPassword(emailInput.value, passwordInput.value)
-        .then(user => window.location.href = `/home/${user.uid}`)
+        .then(user => window.location.href = `/entries?uid=${user.uid}&firstname=${user.displayName}&fromdate=${''}&fromtime=${''}&todate=${''}&totime=${''}`)
         .catch(err => {
             loginErrorMsg.textContent = err;
             loginErrorMsg.style.visibility = 'visible';
@@ -34,7 +34,10 @@ function login() {
 function signup() {
     firebase.auth().createUserWithEmailAndPassword(emailInputSignup.value, passwordInputSignup.value)
         .then(user => user.updateProfile({ displayName: nameInputSignup.value }))
-        .then(() => window.location.href = `/home/${firebase.auth().currentUser.uid}`)
+        .then(() => {
+            const user = firebase.auth().currentUser;
+            window.location.href = `/entries?uid=${user.uid}&firstname=${user.displayName}&fromdate=${''}&fromtime=${''}&todate=${''}&totime=${''}`
+        })
         .catch(err => {
             signupErrorMsg.textContent = err;
             signupErrorMsg.style.visibility = 'visible';

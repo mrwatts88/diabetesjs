@@ -10,26 +10,33 @@ const logoutBtn = document.querySelector('.logout-btn');
 addEntryBtn.addEventListener('click', addEntryToFirebase);
 logoutBtn.addEventListener('click', logout);
 
+
 function addEntryToFirebase() {
-    const userId = userIdInput.value;
+
+    const uid = firebase.auth().currentUser.uid;
+    userIdInput.value = uid;
     const data = {
-        category: categoryInput.value,
+        uid,
         entry: entryInput.value,
         date: dateInput.value,
         time: timeInput.value
     }
 
-    mockFirebaseFxn(userId, data).then(res => historyForm.submit()).catch(err => console.log(err))
-}
+    // Get a key for a new Post.
+    var newPostKey = firebase.database().ref().child('records').child(`${categoryInput.value}`).push().key;
 
-// Replace with firebase fxn
-function mockFirebaseFxn(userId, data) {
-    return new Promise((res, rej) => {
-        console.log(userId, data)
-        res();
-    })
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates['/records/' + uid + `/${categoryInput.value}/` + newPostKey] = data;
+
+    firebase.database().ref().update(updates)
+        .then(() => historyForm.submit()).catch(err => console.log(err));
 }
 
 function logout() {
     firebase.auth().signOut().then(res => window.location.href = '/login');
+}
+
+function beforeSubmit() {
+    userIdInput.value = firebase.auth().currentUser.uid;
 }

@@ -5,7 +5,7 @@ block content
     div(class="nav-bar")
       div(class="nav-bar-content")
         span DiabetesJS
-        span(id="welcome-text") Welcome, #{user.user.firstName}
+        span(id="welcome-text") Welcome, #{firstName}
         span(class="logout-btn") Logout
     div(class="container")
       div(class="card")
@@ -29,19 +29,19 @@ block content
               input(type="text" class="small-width2" name="" placeholder="hh:mm" id="time-input")
             div
               input(type="submit" class="four" value="Add" id="add-entry-btn")
-      form(class="button-style card margin-top padding-top text-center" method="post" action="/entries" id="history-form")
+      form(class="button-style card margin-top padding-top text-center" method="get" onsubmit="beforeSubmit()" action="/entries" id="history-form")
         div(class="text-center")
           div(class="text-left padding15 margin-bottom negative-margin-lr negative-margin-top background-color")
             h4(class="card-header")
               b View Your History
-        input(type="hidden", name="userid" value=user['user']['id'] id="user-id-input")
-        input(type="hidden", name="username" value=user['user']['firstName'] id="user-name-input")
+        input(type="hidden", name="firstname" value=firstName id="user-name-input")
+        input(type="hidden", name="uid" value="" id="user-id-input")
         label(for="from") From 
-        input(type="text" class="small-width1" name="fromdate" value=fromdate placeholder="mm/dd/yyyy" id="date-input")
-        input(type="text" class="small-width2 margin-right" name="fromtime" value=fromtime placeholder="hh:mm" id="time-input")
+        input(type="text" class="small-width1" name="fromdate" value=fromDate placeholder="mm/dd/yyyy" id="date-input")
+        input(type="text" class="small-width2 margin-right" name="fromtime" value=fromTime placeholder="hh:mm" id="time-input")
         label(for="to") To 
-        input(type="text" class="small-width1" name="todate" value=todate placeholder="mm/dd/yyyy" id="date-input")
-        input(type="text" class="small-width2" name="totime" value=totime placeholder="hh:mm" id="time-input")
+        input(type="text" class="small-width1" name="todate" value=toDate placeholder="mm/dd/yyyy" id="date-input")
+        input(type="text" class="small-width2" name="totime" value=toTime placeholder="hh:mm" id="time-input")
         input(type="submit" value="Filter")
         div(class="mini-card-wrapper")
           div(class="card half-width margin-top text-left")
@@ -55,9 +55,9 @@ block content
                   th 
                     i Entry
                 tbody
-                  each val, index in user.bglData
+                  each val, index in data.bgl
                     tr
-                      td(class="width25") #{val.timestamp}
+                      td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}                  
           div(class="card half-width margin-top text-left")
               h4(class="card-header")
@@ -69,9 +69,9 @@ block content
                   th
                     i Entry
                 tbody
-                  each val, index in user.bglData
+                  each val, index in data.diet
                     tr
-                      td(class="width25") #{val.timestamp}
+                      td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}     
           div(class="card half-width margin-top text-left")
               h4(class="card-header")
@@ -83,9 +83,9 @@ block content
                   th 
                     i Entry
                 tbody
-                  each val, index in user.bglData
+                  each val, index in data.exercise
                     tr
-                      td(class="width25") #{val.timestamp}
+                      td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}     
           div(class="card half-width margin-top text-left")
               h4(class="card-header")
@@ -97,8 +97,8 @@ block content
                   th 
                     i Entry
                 tbody
-                  each val, index in user.bglData
+                  each val, index in data.medication
                     tr
-                      td(class="width25") #{val.timestamp}
+                      td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}
     script(src='/javascripts/home.js')
