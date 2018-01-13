@@ -15,17 +15,17 @@ router.get('/login', function (req, res, next) {
 
 router.get('/entries', function (req, res, next) {
 
-  api.read(req.query.uid, (data) => {
-    res.render('home',
-      {
-        data,
-        firstName: req.query.firstname,
-        fromDate: req.query.fromdate,
-        fromTime: req.query.fromtime,
-        toDate: req.query.todate,
-        toTime: req.query.totime
-      }
-    );
+  const params = {
+    uid: req.query.uid,
+    firstName: req.query.firstname,
+    fromDate: req.query.fromdate,
+    fromTime: req.query.fromtime,
+    toDate: req.query.todate,
+    toTime: req.query.totime
+  }
+
+  api.read(params, (data) => {
+    res.render('home', Object.assign({}, params, data));
   });
 });
 

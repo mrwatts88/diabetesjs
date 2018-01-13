@@ -9,21 +9,21 @@ admin.initializeApp({
 
 const db = admin.database();
 
-function read(uid, responseCallback) {
+function read(params, responseCallback) {
     let data = { bgl: [], exercise: [], diet: [], medication: [] };
-    let ref = db.ref().child(`records/${uid}/bgl`).orderByChild('time');
+    let ref = db.ref().child(`records/${params.uid}/bgl`).orderByChild('time');
     ref.once('value', bglsnapshot => {
         bglsnapshot.forEach(child => { data.bgl.push(child.val()) })
 
-        ref = db.ref().child(`records/${uid}/exercise`);
+        ref = db.ref().child(`records/${params.uid}/exercise`).orderByChild('time');
         ref.once('value', exercisesnapshot => {
             exercisesnapshot.forEach(child => { data.exercise.push(child.val()) })
 
-            ref = db.ref().child(`records/${uid}/diet`);
+            ref = db.ref().child(`records/${params.uid}/diet`).orderByChild('time');
             ref.once('value', dietsnapshot => {
                 dietsnapshot.forEach(child => { data.diet.push(child.val()); })
 
-                ref = db.ref().child(`records/${uid}/medication`);
+                ref = db.ref().child(`records/${params.uid}/medication`).orderByChild('time');
                 ref.once('value', medicationsnapshot => {
                     medicationsnapshot.forEach(child => { data.medication.push(child.val()); })
 
