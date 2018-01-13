@@ -13,11 +13,16 @@ logoutBtn.addEventListener('click', logout);
 function addEntryToFirebase() {
     const uid = firebase.auth().currentUser.uid;
     userIdInput.value = uid;
+    const dateArray = dateInput.value.split('/');
+    const year = dateArray[2];
+    const month = dateArray[0];
+    const day = dateArray[1];
+
+    const dateTime = year + month + day + timeInput.value.split(':').join('');
     const data = {
         uid,
-        entry: entryInput.value,
-        date: dateInput.value,
-        time: timeInput.value
+        dateTime,
+        entry: entryInput.value
     }
 
     firebase.database().ref().child('records').child(uid).child(`${categoryInput.value}`).push(data)

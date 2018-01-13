@@ -57,7 +57,7 @@ block content
                 tbody
                   each val in bgl
                     tr
-                      td(class="width25") #{val.time}
+                      td(class="width25") #{`${val.dateTime.substring(4,6)}/${val.dateTime.substring(6,8)}/${val.dateTime.substring(0,4)} ${val.dateTime.substring(8,10)}:${val.dateTime.substring(10,12)}`}
                       td(class="width75") #{val.entry}                  
           div(class="card half-width margin-top text-left")
               h4(class="card-header")
@@ -71,7 +71,7 @@ block content
                 tbody
                   each val in diet
                     tr
-                      td(class="width25") #{val.time}
+                      td(class="width25") #{`${val.dateTime.substring(4,6)}/${val.dateTime.substring(6,8)}/${val.dateTime.substring(0,4)} ${val.dateTime.substring(8,10)}:${val.dateTime.substring(10,12)}`}
                       td(class="width75") #{val.entry}     
           div(class="card half-width margin-top text-left")
               h4(class="card-header")
@@ -85,7 +85,7 @@ block content
                 tbody
                   each val in exercise
                     tr
-                      td(class="width25") #{val.time}
+                      td(class="width25") #{`${val.dateTime.substring(4,6)}/${val.dateTime.substring(6,8)}/${val.dateTime.substring(0,4)} ${val.dateTime.substring(8,10)}:${val.dateTime.substring(10,12)}`}
                       td(class="width75") #{val.entry}     
           div(class="card half-width margin-top text-left")
               h4(class="card-header")
@@ -99,6 +99,6 @@ block content
                 tbody
                   each val in medication
                     tr
-                      td(class="width25") #{val.time}
+                      td(class="width25") #{`${val.dateTime.substring(4,6)}/${val.dateTime.substring(6,8)}/${val.dateTime.substring(0,4)} ${val.dateTime.substring(8,10)}:${val.dateTime.substring(10,12)}`}
                       td(class="width75") #{val.entry}
     script(src='/javascripts/home.js')
