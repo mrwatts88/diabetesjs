@@ -9,28 +9,29 @@ admin.initializeApp({
 
 const db = admin.database();
 
-function readAll(uid, responseCallback) {
-    const ref = db.ref().child(`records/${uid}`);
-    ref.once("value", snapshot => {
-        const snapshotVal = snapshot.val();
-        let data;
-        if (!snapshotVal) {
-            data = { bgl: {}, diet: {}, exercise: {}, medication: {} }
-        } else {
-            data = {
-                bgl: !snapshotVal.bgl ? {} : snapshotVal.bgl,
-                diet: !snapshotVal.diet ? {} : snapshotVal.diet,
-                exercise: !snapshotVal.exercise ? {} : snapshotVal.exercise,
-                medication: !snapshotVal.medication ? {} : snapshotVal.medication
-            }
-        }
-        responseCallback(data);
+function read(uid, responseCallback) {
+    let data = { bgl: [], exercise: [], diet: [], medication: [] };
+    let ref = db.ref().child(`records/${uid}/bgl`).orderByChild('time');
+    ref.once('value', bglsnapshot => {
+        bglsnapshot.forEach(child => { data.bgl.push(child.val()) })
+
+        ref = db.ref().child(`records/${uid}/exercise`);
+        ref.once('value', exercisesnapshot => {
+            exercisesnapshot.forEach(child => { data.exercise.push(child.val()) })
+
+            ref = db.ref().child(`records/${uid}/diet`);
+            ref.once('value', dietsnapshot => {
+                dietsnapshot.forEach(child => { data.diet.push(child.val()); })
+
+                ref = db.ref().child(`records/${uid}/medication`);
+                ref.once('value', medicationsnapshot => {
+                    medicationsnapshot.forEach(child => { data.medication.push(child.val()); })
+
+                    responseCallback(data);
+                });
+            });
+        });
     });
 }
 
-function readRange() {
-
-}
-
-module.exports.readAll = readAll;
-module.exports.readRange = readRange;
+module.exports.read = read;

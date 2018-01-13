@@ -55,7 +55,7 @@ block content
                   th 
                     i Entry
                 tbody
-                  each val, index in data.bgl
+                  each val in data.bgl
                     tr
                       td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}                  
@@ -69,7 +69,7 @@ block content
                   th
                     i Entry
                 tbody
-                  each val, index in data.diet
+                  each val in data.diet
                     tr
                       td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}     
@@ -83,7 +83,7 @@ block content
                   th 
                     i Entry
                 tbody
-                  each val, index in data.exercise
+                  each val in data.exercise
                     tr
                       td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}     
@@ -97,7 +97,7 @@ block content
                   th 
                     i Entry
                 tbody
-                  each val, index in data.medication
+                  each val in data.medication
                     tr
                       td(class="width25") #{val.time}
                       td(class="width75") #{val.entry}

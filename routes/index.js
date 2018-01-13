@@ -14,7 +14,8 @@ router.get('/login', function (req, res, next) {
 });
 
 router.get('/entries', function (req, res, next) {
-  api.readAll(req.query.uid, (data) => {
+
+  api.read(req.query.uid, (data) => {
     res.render('home',
       {
         data,
